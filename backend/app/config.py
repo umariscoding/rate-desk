@@ -38,3 +38,5 @@ class Settings(BaseSettings):
     data_dir: Path = Field(default=BACKEND_ROOT / "var")
     proposal_template: Path = Field(default=BACKEND_ROOT / "templates" / "proposal_template.docx")
     allowed_origins: list[str] = ["http://localhost:5173"]
+    # The built frontend, served by this same server when it exists (a deployment). In development Vite serves it.
+    frontend_dir: Path | None = Field(default=BACKEND_ROOT.parent / "frontend" / "dist")

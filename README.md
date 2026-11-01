@@ -9,6 +9,10 @@ streamed activity, per-message tool scoping, cost tracking). The demo property i
 
 ## The flow
 
+![Rate Desk flow](docs/rate-desk-flow.png)
+
+The diagram is editable: open `docs/rate-desk-flow.drawio` at app.diagrams.net.
+
 | Step | Who | What happens |
 | - | - | - |
 | 1 | Salesperson | Pastes the client's email |

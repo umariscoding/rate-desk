@@ -9,6 +9,7 @@ from app.config import Settings
 from app.container import build_container, create_cominty_client
 from app.interface.api.error_handlers import register_error_handlers
 from app.interface.api.router import api_router
+from app.interface.web import mount_frontend
 
 logging.basicConfig(level=logging.INFO)
 logging.getLogger("httpx").setLevel(logging.WARNING)  # httpx logs full URLs, including presigned signatures.
@@ -29,6 +30,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
     register_error_handlers(app)
     app.include_router(api_router)
+    mount_frontend(app, settings.frontend_dir)  # Last, so it never shadows an API route.
     return app
 
 

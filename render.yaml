@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: rate-desk
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: COMINTY_API_KEY
+        sync: false
+      - key: COMINTY_USER_ID
+        sync: false
+      - key: AGENT_INTAKE
+        value: BD5gw1G8bt13
+      - key: AGENT_RATE_REPLY
+        value: 6ZoROZeYlRps
+      - key: AGENT_RATE_GUARD
+        value: kSfAf_vXdbqc
+      - key: AGENT_HANDOFF
+        value: cXDs6FnU0vfr
+      - key: SESSION_SECRET
+        generateValue: true
