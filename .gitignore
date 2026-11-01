@@ -1,0 +1,21 @@
+# Secrets and local data
+.env
+backend/var/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Frontend
+node_modules/
+dist/
+*.tsbuildinfo
+frontend/e2e/out/
+
+# Tools and OS
+.vercel/
+.DS_Store
