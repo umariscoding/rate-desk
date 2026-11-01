@@ -7,7 +7,7 @@ import path from "node:path";
 
 const OUT = path.resolve("e2e/out"); // Screenshots and the downloaded proposal land here.
 fs.mkdirSync(OUT, { recursive: true });
-const URL = "http://localhost:5173/";
+const URL = process.env.E2E_URL ?? "http://localhost:5173/";
 const SLOW = 180_000; // agent steps can take a while on a first, live run
 
 const browser = await chromium.launch({
@@ -18,7 +18,7 @@ const context = await browser.newContext({ viewport: { width: 1280, height: 900 
 const page = await context.newPage();
 const problems = [];
 page.on("pageerror", (error) => problems.push(`page error: ${error.message}`));
-page.on("response", (response) => response.status() >= 400 && problems.push(`HTTP ${response.status()} ${response.request().method()} ${response.url().replace("http://localhost:5173", "")}`));
+page.on("response", (response) => response.status() >= 400 && problems.push(`HTTP ${response.status()} ${response.request().method()} ${response.url().replace(URL.replace(/\/$/, ""), "")}`));
 page.on("console", (message) => false);
 
 let stepNumber = 0;
